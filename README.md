@@ -1,2 +1,2 @@
 # KSA-COVID-19
-simple website that shows Covid-19 stats in Saudi Arabia
+This project is made for a course project (CSC 457: Internet Technologies) and is intended to run on mobile devices.
