@@ -5,9 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
   <script>
     function expand() {
       var moreText = document.getElementById("more");
@@ -22,7 +20,6 @@
       }
     }
   </script>
-
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css" />
 
@@ -58,6 +55,7 @@
   </nav>
 
   <br>
+
   <div class="d-flex justify-content-center">
     <div id="spinner" class="spinner-border" role="status"></div>
   </div>
@@ -74,11 +72,11 @@
             Mortalities: <span class="text-secondary" id="mortalities"></span> <br />
             Recovered: <span class="text-success" id="recovered"></span> <br />
             <span id="more" style="display: none;">
+              Critical: <span class="text-info" id="critical"></span> <br />
               Cases/Million: <span class="text-info" id="casesPerOneMillion"></span> <br />
               Deaths/Million: <span class="text-info" id="deathsPerOneMillion"></span> <br />
               Tests: <span class="text-info" id="tests"></span> <br />
             </span>
-
           </p>
           <button type="button" class="btn btn-outline-light btn-sm border-0" onclick="expand()" id="moreBtn">More <svg
               class="bi bi-chevron-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
@@ -96,20 +94,19 @@
     async function getData() {
       const response = await fetch(api_url);
       const data = await response.json();
-      var { cases, recovered, deaths, todayCases, active, casesPerOneMillion, deathsPerOneMillion, tests } = data;
+      var { cases, recovered, deaths, todayCases, active, critical, casesPerOneMillion, deathsPerOneMillion, tests } = data;
       if (todayCases == 0) {
-        console.log("zero");
         api_url = "https://corona.lmao.ninja/v2/countries/sa?yesterday=true";
         const response = await fetch(api_url);
         const data = await response.json();
         var { todayCases } = data;
-        console.log(todayCases);
       }
       document.getElementById("totalCases").textContent = cases;
       document.getElementById("activeCases").textContent = active;
       document.getElementById("newCases").textContent = todayCases;
       document.getElementById("mortalities").textContent = deaths;
       document.getElementById("recovered").textContent = recovered;
+      document.getElementById("critical").textContent = critical;
       document.getElementById("casesPerOneMillion").textContent = casesPerOneMillion;
       document.getElementById("deathsPerOneMillion").textContent = deathsPerOneMillion;
       document.getElementById("tests").textContent = tests;
