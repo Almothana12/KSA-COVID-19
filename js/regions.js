@@ -22,7 +22,7 @@ async function getRegion(region) {
         const data = await response.json();
 
         const date = data.records[0].fields.date; // this holds the most recent date in the api
-        var cases = 0; activeCases = 0; mortalities = a0; recoveries = 0;
+        var cases = 0; activeCases = 0; mortalities = 0; recoveries = 0;
         for (let i = 0; i < rows; i++) {
             if (data.records[i].fields.date != date) {
                 break;
