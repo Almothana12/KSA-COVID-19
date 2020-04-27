@@ -1,7 +1,7 @@
 var finished = 0;
 
 getRegion("Riyadh");
-getRegion("Makkah");
+getRegion("Mecca");
 getRegion("Medina");
 getRegion("Qassim");
 getRegion("Eastern+Region");
@@ -51,15 +51,14 @@ async function getRegion(region) {
         document.getElementById(region + "Mortalities").textContent = mortalities;
         document.getElementById(region + "Recovered").textContent = recoveries;
 
-        finished++;
-        if (finished == 13) { // if this is the last region to load
-            // hide the loading spinner and show the body
-            document.getElementById("spinner").style.display = "none";
-            document.getElementById("regionBody").style.display = "inline";
-        }
-
     } catch (error) {
         console.error(error);
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById("regionBody").style.display = "inline";
+    }
+    finished++;
+    if (finished == 13) { // if this is the last region to load
+        // hide the loading spinner and show the body
         document.getElementById("spinner").style.display = "none";
         document.getElementById("regionBody").style.display = "inline";
     }
