@@ -16,7 +16,7 @@ getRegion("Al+Jouf");
 
 async function getRegion(region) {
     try {
-        rows = 100;
+        rows = 150;
         const api_url = "https://datasource.kapsarc.org/api/records/1.0/search/?dataset=saudi-arabia-coronavirus-disease-covid-19-situation&rows=" + rows + "&sort=date&refine.daily_cumulative=Cumulative&refine.region=" + region;
         const response = await fetch(api_url);
         const data = await response.json();
