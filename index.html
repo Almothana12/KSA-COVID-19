@@ -90,13 +90,13 @@
   </div>
 
   <script>
-    var api_url = "https://corona.lmao.ninja/v2/countries/sa";
+    var api_url = "https://disease.sh/v3/covid-19/countries/sa";
     async function getData() {
       const response = await fetch(api_url);
       const data = await response.json();
       var { cases, recovered, deaths, todayCases, active, critical, casesPerOneMillion, deathsPerOneMillion, tests } = data;
       if (todayCases == 0) {
-        api_url = "https://corona.lmao.ninja/v2/countries/sa?yesterday=true";
+        api_url = "https://disease.sh/v3/covid-19/countries/sa?yesterday=true";
         const response = await fetch(api_url);
         const data = await response.json();
         var { todayCases } = data;
